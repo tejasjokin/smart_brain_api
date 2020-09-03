@@ -24,7 +24,7 @@ app.use(express.json())
 app.use(express.static(distDir))
 app.use(cors())
 
-app.get('/',(req, res) => {});
+app.get('/',(req, res) => {res.json('This is working')});
 
 app.post('/signin', (req, res) => {signin.handleSignin(req,res,db,bcrypt)})
 
