@@ -2,6 +2,7 @@ const express = require('express');
 const bcrypt = require('bcryptjs');
 const cors = require('cors');
 const knex = require('knex');
+const distDir = __dirname;
 const register = require('./controllers/register.js');
 const signin = require('./controllers/signin.js');
 const profile = require('./controllers/profile.js');
@@ -20,6 +21,7 @@ const db = knex({
 const app = express();
 
 app.use(express.json())
+app.use(express.static(distDir))
 app.use(cors())
 
 app.post('/signin', (req, res) => {signin.handleSignin(req,res,db,bcrypt)})
